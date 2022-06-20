@@ -30,7 +30,7 @@ public class CookieClientHandler implements Runnable{
                     System.out.printf("file -> %s\n", this.cookieFile);
     
                     randomCookieResp = Cookie.getRandomCookie(this.cookieFile);
-                    netIO.write("cookie-text "+ randomCookieResp);
+                    netIO.write("cookie-text,"+ randomCookieResp);
                     break;
                 } 
             }

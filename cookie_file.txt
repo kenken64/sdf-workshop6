@@ -25,3 +25,7 @@ Tassies
 Lebkuchen
 Black and White
 White chocolate chips and macadamia nuts
+Red chocolate chips and macadamia nuts
+Blue chocolate chips and macadamia nuts
+Purple chocolate chips and macadamia nuts
+Orange chocolate chips and macadamia nuts

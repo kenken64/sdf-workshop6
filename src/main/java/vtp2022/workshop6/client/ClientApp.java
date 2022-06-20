@@ -30,7 +30,7 @@ public class ClientApp
             dis = new DataInputStream(is);
             os = sock.getOutputStream();
             DataOutputStream dos = new DataOutputStream(os);
-        
+            
             if(input.equals("exit"))
                 stop = true;
             dos.writeUTF(input);
@@ -40,13 +40,13 @@ public class ClientApp
                 try{
                     response = dis.readUTF();
                 }catch(EOFException e){
-                    e.printStackTrace();
+                    // suppress if the reading is called twice.
                 }
                 
                 if(response != null){
                     if(response.contains("cookie-text")){
                         System.out.println(response);
-                        String[] cookieValue = response.split(" ");
+                        String[] cookieValue = response.split(",");
                         System.out.printf("Cookie from server >> %s\n", cookieValue[1]);
                     }
                 } 
