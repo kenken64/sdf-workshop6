@@ -44,10 +44,15 @@ public class ClientApp
                 }
                 
                 if(response != null){
-                    if(response.contains("cookie-text")){
+                    if(response.contains("cookie-text") || response.contains("error,")){
                         System.out.println(response);
                         String[] cookieValue = response.split(",");
-                        System.out.printf("Cookie from server >> %s\n", cookieValue[1]);
+                        if(response.contains("error,")){
+                            System.out.printf("Error from server >> %s\n", cookieValue[1]);
+                        }
+                        if(response.contains("cookie-text,")){
+                            System.out.printf("Cookie from server >> %s\n", cookieValue[1]);
+                        }
                     }
                 } 
             }

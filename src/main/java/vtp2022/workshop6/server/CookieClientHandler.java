@@ -32,7 +32,10 @@ public class CookieClientHandler implements Runnable{
                     randomCookieResp = Cookie.getRandomCookie(this.cookieFile);
                     netIO.write("cookie-text,"+ randomCookieResp);
                     break;
-                } 
+                }else{
+                    netIO.write("error,invalid command");
+                    break;
+                }
             }
             netIO.close();
             sock.close();
