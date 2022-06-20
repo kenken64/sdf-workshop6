@@ -21,12 +21,10 @@ public class NetworkIO {
     }
 
     public String read() throws IOException {
-       // dos.writeUTF(str);
        return dis.readUTF();
     }
 
     public void write(String msg) throws IOException {
-        // dos.writeUTF(str);
         dos.writeUTF(msg);
         dos.flush();
      }

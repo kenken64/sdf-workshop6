@@ -16,24 +16,29 @@ public class CookieClientHandler implements Runnable{
     @Override
     public void run(){
         System.out.println("Starting a client thread");
+        NetworkIO netIO = null;
         try {
-            NetworkIO netIO = new NetworkIO(sock);
+            netIO = new NetworkIO(sock);
             String req = "";
-            while(!req.equals("exit")){
+            String randomCookieResp = "";
+            while(true){
                 req = netIO.read();
                 System.out.printf("[client] %s\n", req);
                 if(req.trim().equals("exit"))
                     break;
-                // TODO  implement the random cookie then return ther string 2 
-                // client
-                netIO.write("");
+                if (req.trim().equals("get-cookie")) {
+                    System.out.printf("file -> %s\n", this.cookieFile);
+    
+                    randomCookieResp = Cookie.getRandomCookie(this.cookieFile);
+                    netIO.write("cookie-text "+ randomCookieResp);
+                    break;
+                } 
             }
-
             netIO.close();
             sock.close();
+            
             System.out.println("Exiting the thread !");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
